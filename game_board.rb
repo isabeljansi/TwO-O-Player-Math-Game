@@ -20,7 +20,9 @@ def display_score(players)
 end
 
 def winner(players)
-  if players[0][:wins] > players[1][:wins]
+  if players[0][:wins] == players[1][:wins]
+    "It's a draw"
+  elsif players[0][:wins] > players[1][:wins]
     "#{players[0][:name]} wins with a score of #{players[0][:wins]}/3"
   else
     "#{players[1][:name]} wins with a score of #{players[1][:wins]}/3"
@@ -28,7 +30,6 @@ def winner(players)
 end
 
 while players[0][:wins] > 0 && players[1][:wins] > 0
-
   players. each { |player| 
     number1 = rand(0..10)
     number2 = rand(0..10)
@@ -42,19 +43,12 @@ while players[0][:wins] > 0 && players[1][:wins] > 0
       player[:wins] -= 1
       display_score(players)
     end
-
-    if player[:wins] != 0
-      puts 
-      puts "----New Turn----"
-      puts
-    else
-      puts
-      puts winner(players)
-      puts "----Game Over----"
-      puts
-      break
-    end
+    puts 
+    puts "----New Turn----"
+    puts
   }
-
 end
+
+puts winner(players)
+puts "----Game Over----"
 
